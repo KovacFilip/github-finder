@@ -7,26 +7,28 @@ function App() {
     const [user, setUser] = useState<User | undefined>(undefined);
 
     useEffect(() => {
-        getUser("metju-ac")
-            .then((res) => {
-                const data = res.data;
-                console.log(res);
-                const newUser: User = {
-                    username: data.login,
-                    bio: data.bio,
-                    avatarUrl: data.avatar_url,
-                    email: data.email,
-                    created: data.created_at,
-                    followers: data.followers,
-                    following: data.following,
-                    githubUrl: data.html_url,
-                };
+        setTimeout(() => {
+            getUser("KovacFilip")
+                .then((res) => {
+                    const data = res.data;
+                    console.log(res);
+                    const newUser: User = {
+                        username: data.login,
+                        bio: data.bio,
+                        avatarUrl: data.avatar_url,
+                        email: data.email,
+                        created: data.created_at,
+                        followers: data.followers,
+                        following: data.following,
+                        githubUrl: data.html_url,
+                    };
 
-                setUser(newUser);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+                    setUser(newUser);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }, 2000);
     }, []);
 
     return (

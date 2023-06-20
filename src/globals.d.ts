@@ -8,3 +8,9 @@ interface User {
     following: number;
     created: string;
 }
+
+interface Repo {
+    reponame: string;
+    date: string;
+    url: string;
+}
