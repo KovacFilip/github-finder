@@ -1,4 +1,5 @@
-import { Grid } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
+import { Organizations } from "../components/Organizations";
 import { Repos } from "../components/Repos";
 import { SearchBar } from "../components/SearchBar";
 import { User } from "../components/User";
@@ -15,7 +16,10 @@ export const Layout: React.FC<LayoutProps> = ({ user }) => {
             </Grid>
             <Grid container item xs={12} spacing={3}>
                 <Grid item md={12} lg={6}>
-                    <User user={user} />
+                    <Stack spacing={3}>
+                        <User user={user} />
+                        <Organizations />
+                    </Stack>
                 </Grid>
                 <Grid item md={12} lg={6}>
                     <Repos />
