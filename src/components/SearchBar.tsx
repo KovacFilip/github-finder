@@ -1,9 +1,9 @@
 import { Button, Stack, TextField } from "@mui/material";
-import { SectionPaper } from "../styledMuiComponents/SectionPaper";
+import { PaperWrapper } from "./PaperWrapper";
 
 export const SearchBar: React.FC = () => {
     return (
-        <SectionPaper elevation={16}>
+        <PaperWrapper>
             <Stack
                 direction="row"
                 spacing={3}
@@ -14,6 +14,6 @@ export const SearchBar: React.FC = () => {
                 <TextField variant="outlined" label="Find a user" />
                 <Button variant="contained">SEARCH</Button>
             </Stack>
-        </SectionPaper>
+        </PaperWrapper>
     );
 };

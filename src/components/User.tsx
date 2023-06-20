@@ -1,6 +1,7 @@
-import { Box, Grid, Stack, Typography } from "@mui/material";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { dateDisplay } from "../helpers/dateDisplay";
 import { ProfilePicture } from "../styledMuiComponents/ProfilePicture";
-import { SectionPaper } from "../styledMuiComponents/SectionPaper";
+import { PaperWrapper } from "./PaperWrapper";
 
 interface userProps {
     user: User;
@@ -18,10 +19,9 @@ export const User: React.FC<userProps> = ({ user }) => {
         githubUrl,
     } = user;
 
-    const dateCreated = new Date(created);
-
     return (
-        <SectionPaper elevation={16}>
+		<PaperWrapper title="Profile">
+
             <Grid container sx={{ alignItems: "center" }}>
                 <Grid item xs={5}>
                     <ProfilePicture src={avatarUrl} alt="profilePic" />
@@ -65,8 +65,7 @@ export const User: React.FC<userProps> = ({ user }) => {
                                 </Typography>
                             </Box>
                             <Typography variant="body1">
-                                {dateCreated.getDate()}.{dateCreated.getMonth()}
-                                .{dateCreated.getFullYear()}
+                                {dateDisplay(created)}
                             </Typography>
                         </Stack>
                         <Grid container spacing={2}>
@@ -81,11 +80,18 @@ export const User: React.FC<userProps> = ({ user }) => {
                                 </Typography>
                             </Grid>
                         </Grid>
-
-                        <a href={githubUrl}>{githubUrl}</a>
+                        <Button
+                            variant="text"
+                            onClick={() => {
+								window.open(githubUrl);
+                            }}
+                            sx={{ width: "150px" }}
+							>
+                            Visit profile
+                        </Button>
                     </Stack>
                 </Grid>
             </Grid>
-        </SectionPaper>
+							</PaperWrapper>
     );
 };
