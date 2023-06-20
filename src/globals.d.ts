@@ -14,3 +14,9 @@ interface Repo {
     date: string;
     url: string;
 }
+
+interface Organization {
+    name: string;
+    img_url: string;
+    url: string;
+}
