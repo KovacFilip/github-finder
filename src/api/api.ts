@@ -7,3 +7,7 @@ const client = axios.create({
 export const getUser = (username: string) => {
     return client.get(`/users/${username}`);
 };
+
+export const getUserRepos = (username: string) => {
+    return client.get(`/users/${username}/repos`);
+};
