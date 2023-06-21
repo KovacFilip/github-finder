@@ -1,40 +1,46 @@
-import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
-import { getUserRepos } from "../api/api";
+import { CircularProgress, Grid, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 import { PaperWrapper } from "./PaperWrapper";
 import { Repo } from "./Repo";
 
 export const Repos: React.FC = () => {
-    const [repos, setRepos] = useState<Repo[] | undefined>(undefined);
-
-    useEffect(() => {
-        getUserRepos("Kiwi").then((res) => {
-            const newRepos = res.data.map((repo: any) => {
-                const newRepo: Repo = {
-                    reponame: repo.name,
-                    date: repo.created_at,
-                    url: repo.svn_url,
-                };
-
-                return newRepo;
-            });
-            setRepos(newRepos);
-        });
-    }, []);
-
-    const reposObjects = repos ? (
-        repos.map((repo: Repo, index: number) => {
-            return <Repo key={index} repo={repo} />;
-        })
-    ) : (
-        <div></div>
+    const repos = useSelector(
+        (state: RootState) => state.githubUserSlice.repos
     );
 
+    const loading = useSelector(
+        (state: RootState) => state.githubUserSlice.loading
+    );
+
+    const reposObjects =
+        repos && !loading
+            ? repos.map((repo: Repo, index: number) => {
+                  return <Repo key={index} repo={repo} />;
+              })
+            : "";
+
     return (
-        <PaperWrapper title="Repositories">
-            <Grid container spacing={4}>
-                {reposObjects}
-            </Grid>
-        </PaperWrapper>
+        <>
+            {reposObjects.length === 0 && !loading && (
+                <PaperWrapper title="Repositories">
+                    <Typography variant="body1">
+                        User does not have any public repositories
+                    </Typography>
+                </PaperWrapper>
+            )}
+            {reposObjects.length > 0 && !loading && (
+                <PaperWrapper title="Repositories">
+                    <Grid container spacing={4}>
+                        {reposObjects}
+                    </Grid>
+                </PaperWrapper>
+            )}
+            {loading && (
+                <PaperWrapper>
+                    <CircularProgress />
+                </PaperWrapper>
+            )}
+        </>
     );
 };

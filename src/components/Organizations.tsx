@@ -1,38 +1,37 @@
-import { Grid } from "@mui/material";
-import { useEffect, useState } from "react";
-import { getUserOrganizations } from "../api/api";
+import { CircularProgress, Grid } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "../store";
 import { Organization } from "./Organization";
 import { PaperWrapper } from "./PaperWrapper";
 
 export const Organizations: React.FC = () => {
-    const [orgs, setOrgs] = useState<Organization[] | undefined>(undefined);
+    const organizations = useSelector(
+        (state: RootState) => state.githubUserSlice.organizations
+    );
 
-    useEffect(() => {
-        getUserOrganizations("Kiwi").then((res) => {
-            const orgs: Organization[] = res.data.map((org: any) => {
-                console.log(org);
-                const newOrg: Organization = {
-                    img_url: org.avatar_url,
-                    description: org.description,
-                    name: org.login,
-                };
+    const loading = useSelector(
+        (state: RootState) => state.githubUserSlice.loading
+    );
 
-                return newOrg;
-            });
-
-            setOrgs(orgs);
-        });
-    }, []);
-
-    const orgsObjs = orgs
-        ? orgs.map((org, index) => (
-              <Organization key={index} organization={org} />
-          ))
-        : "";
+    const orgsObjs =
+        organizations && !loading
+            ? organizations.map((org, index) => (
+                  <Organization key={index} organization={org} />
+              ))
+            : "";
 
     return (
-        <PaperWrapper title="Organizations">
-            <Grid container>{orgsObjs}</Grid>
-        </PaperWrapper>
+        <>
+            {!loading && orgsObjs.length > 0 && (
+                <PaperWrapper title="Organizations">
+                    <Grid container>{orgsObjs}</Grid>
+                </PaperWrapper>
+            )}
+            {loading && (
+                <PaperWrapper>
+                    <CircularProgress />
+                </PaperWrapper>
+            )}
+        </>
     );
 };
