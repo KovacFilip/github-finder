@@ -18,5 +18,5 @@ interface Repo {
 interface Organization {
     name: string;
     img_url: string;
-    url: string;
+    description: string;
 }

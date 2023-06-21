@@ -1,7 +1,35 @@
+import { Grid, Paper, Tooltip } from "@mui/material";
+
 interface orgProps {
     organization: Organization;
 }
 
 export const Organization: React.FC<orgProps> = ({ organization }) => {
-    return <div>{organization.name}</div>;
+    return (
+        <Grid item xs={2}>
+            <Tooltip title={organization.name}>
+                <Paper
+                    elevation={4}
+                    sx={{
+                        width: 100,
+                        height: 100,
+                        borderRadius: "100%",
+                        "&:hover": {
+                            boxShadow: 20,
+                        },
+                    }}
+                >
+                    <img
+                        src={organization.img_url}
+                        alt="organization"
+                        style={{
+                            width: 100,
+                            height: 100,
+                            borderRadius: "100%",
+                        }}
+                    />
+                </Paper>
+            </Tooltip>
+        </Grid>
+    );
 };

@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getUserOrganizations } from "../api/api";
 import { Organization } from "./Organization";
@@ -9,9 +10,10 @@ export const Organizations: React.FC = () => {
     useEffect(() => {
         getUserOrganizations("Kiwi").then((res) => {
             const orgs: Organization[] = res.data.map((org: any) => {
+                console.log(org);
                 const newOrg: Organization = {
                     img_url: org.avatar_url,
-                    url: org.url,
+                    description: org.description,
                     name: org.login,
                 };
 
@@ -28,5 +30,9 @@ export const Organizations: React.FC = () => {
           ))
         : "";
 
-    return <PaperWrapper title="Organizations">{orgsObjs}</PaperWrapper>;
+    return (
+        <PaperWrapper title="Organizations">
+            <Grid container>{orgsObjs}</Grid>
+        </PaperWrapper>
+    );
 };
