@@ -15,14 +15,14 @@ export const Layout: React.FC = () => {
                 <SearchBar />
             </Grid>
             {user && (
-                <Grid container item xs={12} spacing={3}>
-                    <Grid item md={12} lg={6}>
+                <Grid container item spacing={3}>
+                    <Grid item xs={12} lg={6}>
                         <Stack spacing={3}>
                             <User />
                             <Organizations />
                         </Stack>
                     </Grid>
-                    <Grid item md={12} lg={6}>
+                    <Grid item xs={12} lg={6}>
                         <Repos />
                     </Grid>
                 </Grid>
