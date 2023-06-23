@@ -6,7 +6,7 @@ interface orgProps {
 
 export const Organization: React.FC<orgProps> = ({ organization }) => {
     return (
-        <Grid item xs={4} sm={3} md={2} lg={2}>
+        <Grid item xs={4} sm={3} md={2} lg={3} xl={2}>
             <Tooltip title={organization.name}>
                 <Paper
                     elevation={4}
