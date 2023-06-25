@@ -1,4 +1,4 @@
-import { Grid, Stack } from "@mui/material";
+import { Grid, Paper, Stack } from "@mui/material";
 import { useSelector } from "react-redux";
 import { Organizations } from "../components/Organizations";
 import { Repos } from "../components/Repos";
@@ -10,23 +10,33 @@ export const Layout: React.FC = () => {
     const user = useSelector((state: RootState) => state.githubUserSlice.user);
 
     return (
-        <Grid container spacing={3}>
-            <Grid item xs={12}>
-                <SearchBar />
-            </Grid>
-            {user && (
-                <Grid container item spacing={3}>
-                    <Grid item xs={12} lg={6}>
-                        <Stack spacing={3}>
-                            <User />
-                            <Organizations />
-                        </Stack>
-                    </Grid>
-                    <Grid item xs={12} lg={6}>
-                        <Repos />
-                    </Grid>
+        <Paper
+            sx={{
+                height: "100vh",
+                display: "flex",
+                alignItems: "flex-start",
+                overflow: "scroll",
+                overflowX: "hidden",
+            }}
+        >
+            <Grid container spacing={3}>
+                <Grid item xs={12}>
+                    <SearchBar />
                 </Grid>
-            )}
-        </Grid>
+                {user && (
+                    <Grid container item spacing={3}>
+                        <Grid item xs={12} lg={6}>
+                            <Stack spacing={3}>
+                                <User />
+                                <Organizations />
+                            </Stack>
+                        </Grid>
+                        <Grid item xs={12} lg={6}>
+                            <Repos />
+                        </Grid>
+                    </Grid>
+                )}
+            </Grid>
+        </Paper>
     );
 };

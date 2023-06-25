@@ -1,6 +1,7 @@
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
+import { DarkModeContextProvider } from "./context/DarkModeContextProvider";
 import "./index.css";
 import { store } from "./store";
 
@@ -9,6 +10,8 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <Provider store={store}>
-        <App />
+        <DarkModeContextProvider>
+            <App />
+        </DarkModeContextProvider>
     </Provider>
 );

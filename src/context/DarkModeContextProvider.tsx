@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { LIGHT } from "../constants/theme";
 
 const initialValue = {
-    theme: "",
-    setTheme: (theme: string) => {},
+    theme: "" as Theme,
+    setTheme: (theme: Theme) => {},
 };
 
 export const ThemeContext = React.createContext(initialValue);
@@ -15,10 +15,10 @@ interface DarkModeContextProps {
 export const DarkModeContextProvider: React.FC<DarkModeContextProps> = ({
     children,
 }) => {
-    const [theme, setTheme] = useState<string>(LIGHT);
+    const [theme, setTheme] = useState<Theme>(LIGHT);
 
-    const setThemeHandler = (newTheme: string) => {
-		console.log("The new theme: ", newTheme)
+    const setThemeHandler = (newTheme: Theme) => {
+        console.log("The new theme: ", newTheme);
         setTheme(newTheme);
     };
 

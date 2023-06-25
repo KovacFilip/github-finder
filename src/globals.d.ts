@@ -20,3 +20,5 @@ interface Organization {
     img_url: string;
     description: string;
 }
+
+type Theme = "light" | "dark";
