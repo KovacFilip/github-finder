@@ -73,7 +73,9 @@ export const SearchBar: React.FC = () => {
                     alignItems="center"
                 >
                     {user && (
-                        <NavButton onClick={goHomeHandler}>Home</NavButton>
+                        <NavButton onClick={goHomeHandler} variant="text">
+                            Home
+                        </NavButton>
                     )}
                 </Grid>
                 <Grid item xs={6} md={10}>
