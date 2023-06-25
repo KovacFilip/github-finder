@@ -38,6 +38,11 @@ export const githubUserSlice = createSlice({
         setError: (state, action: PayloadAction<boolean>) => {
             state.error = action.payload;
         },
+        removeCurrentUser: (state) => {
+            state.user = undefined;
+            state.organizations = undefined;
+            state.repos = undefined;
+        },
     },
 });
 
@@ -48,4 +53,5 @@ export const {
     startLoading,
     stopLoading,
     setError,
+    removeCurrentUser,
 } = githubUserSlice.actions;

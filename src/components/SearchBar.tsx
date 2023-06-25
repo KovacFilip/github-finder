@@ -1,5 +1,4 @@
 import {
-    Button,
     FormControlLabel,
     Grid,
     Stack,
@@ -14,7 +13,13 @@ import { fetchOrganizationsAndSetStore } from "../helpers/fetchOrganizationsAndS
 import { fetchReposAndSetStore } from "../helpers/fetchReposAndSetStore";
 import { fetchUserAndSetStore } from "../helpers/fetchUserAndSetStore";
 import { RootState } from "../store";
-import { setError, startLoading, stopLoading } from "../store/githubUserSlice";
+import {
+    removeCurrentUser,
+    setError,
+    startLoading,
+    stopLoading,
+} from "../store/githubUserSlice";
+import { NavButton } from "./NavButton";
 import { PaperWrapper } from "./PaperWrapper";
 
 export const SearchBar: React.FC = () => {
@@ -23,6 +28,7 @@ export const SearchBar: React.FC = () => {
     const errorLoading = useSelector(
         (state: RootState) => state.githubUserSlice.error
     );
+    const user = useSelector((state: RootState) => state.githubUserSlice.user);
 
     const themeCtx = useContext(ThemeContext);
 
@@ -52,10 +58,25 @@ export const SearchBar: React.FC = () => {
         }
     };
 
+    const goHomeHandler = () => {
+        dispatch(removeCurrentUser());
+    };
+
     return (
         <PaperWrapper>
-            <Grid container>
-                <Grid item xs={10} md={11}>
+            <Grid container spacing={1}>
+                <Grid
+                    item
+                    xs={3}
+                    md={1}
+                    justifyContent="center"
+                    alignItems="center"
+                >
+                    {user && (
+                        <NavButton onClick={goHomeHandler}>Home</NavButton>
+                    )}
+                </Grid>
+                <Grid item xs={6} md={10}>
                     <Stack
                         direction="row"
                         spacing={3}
@@ -72,12 +93,10 @@ export const SearchBar: React.FC = () => {
                             label="Find a user"
                             inputRef={inputRef}
                         />
-                        <Button variant="contained" onClick={loadData}>
-                            SEARCH
-                        </Button>
+                        <NavButton onClick={loadData}>SEARCH</NavButton>
                     </Stack>
                 </Grid>
-                <Grid item xs={2} md={1}>
+                <Grid item xs={3} md={1}>
                     <FormControlLabel
                         control={<Switch onChange={handleUpdateTheme} />}
                         label="Dark Mode"
