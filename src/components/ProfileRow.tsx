@@ -10,9 +10,9 @@ export const ProfileRow: React.FC<rowProps> = ({ rowName, rowValue }) => {
         <Grid
             container
             spacing={6}
-            sx={{ justifyContent: { xs: "center", sm: "flex-start" } }}
+            sx={{ justifyContent: { xs: "center", md: "flex-start" } }}
         >
-            <Grid item xs={3} sm={2} md={3} lg={4}>
+            <Grid item xs={3} sm={2} md={3} lg={4} xl={3}>
                 <Typography variant="h6">{rowName}</Typography>
             </Grid>
             <Grid item>

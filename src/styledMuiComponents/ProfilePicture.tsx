@@ -7,7 +7,7 @@ export const ProfilePicture = styled("img")(() => ({
     marginLeft: "auto",
     marginRight: "auto",
     display: "block",
-    "@media (min-width: 600px)": {
+    "@media (min-width: 900px)": {
         display: "inline-block",
     },
 }));

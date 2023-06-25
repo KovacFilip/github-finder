@@ -65,7 +65,7 @@ export const User: React.FC = () => {
                                             mx: "auto",
                                             display: {
                                                 xs: "block",
-                                                sm: "inline-block",
+                                                md: "inline-block",
                                             },
                                         }}
                                     >
