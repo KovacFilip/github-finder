@@ -15,6 +15,7 @@ import {
     startLoading,
     stopLoading,
 } from "../store/githubUserSlice";
+import { removeOrganization } from "../store/selectedOrganizationSlice";
 import { DarkModeSwitch } from "../styledMuiComponents/darkModeSwitch";
 import { LanguagesSwap } from "./LanguagesSwap";
 import { NavButton } from "./NavButton";
@@ -42,6 +43,7 @@ export const SearchBar: React.FC = () => {
     const loadData = async () => {
         try {
             dispatch(startLoading());
+            dispatch(removeOrganization());
 
             const username = inputRef.current!.value;
             await fetchUserAndSetStore(dispatch, username);

@@ -1,9 +1,10 @@
-import { Button, CircularProgress, Grid } from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { dateDisplay } from "../helpers/dateDisplay";
 import { RootState } from "../store";
 import { ProfilePicture } from "../styledMuiComponents/ProfilePicture";
+import { PaperButton } from "./PaperButton";
 import { PaperWrapper } from "./PaperWrapper";
 import { ProfileRow } from "./ProfileRow";
 
@@ -62,22 +63,13 @@ export const User: React.FC = () => {
                                         display: "flex",
                                     }}
                                 >
-                                    <Button
-                                        variant="contained"
+                                    <PaperButton
                                         onClick={() => {
                                             window.open(user.githubUrl);
                                         }}
-                                        sx={{
-                                            marginTop: "20px",
-                                            mx: "auto",
-                                            display: {
-                                                xs: "block",
-                                                md: "inline-block",
-                                            },
-                                        }}
                                     >
                                         {t("profile.visitProfile")}
-                                    </Button>
+                                    </PaperButton>
                                 </Grid>
                             </Grid>
                         </Grid>

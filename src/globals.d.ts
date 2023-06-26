@@ -19,6 +19,8 @@ interface Organization {
     name: string;
     img_url: string;
     description: string;
+    websiteUrl?: string;
+    githubUrl?: string;
 }
 
 type Theme = "light" | "dark";

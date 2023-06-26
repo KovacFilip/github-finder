@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { Organizations } from "../components/Organizations";
 import { Repos } from "../components/Repos";
 import { SearchBar } from "../components/SearchBar";
+import { SelectedOrganization } from "../components/SelectedOrganization";
 import { User } from "../components/User";
 import { WelcomeComponent } from "../components/WelcomeComponent";
 import { RootState } from "../store";
@@ -31,6 +32,7 @@ export const Layout: React.FC = () => {
                             <Stack spacing={3}>
                                 <User />
                                 <Organizations />
+                                <SelectedOrganization />
                             </Stack>
                         </Grid>
                         <Grid item xs={12} lg={6}>

@@ -18,3 +18,7 @@ export const getUserRepos = (username: string) => {
 export const getUserOrganizations = (username: string) => {
     return client.get(`/users/${username}/orgs`);
 };
+
+export const getOrganization = (name: string) => {
+    return client.get(`/orgs/${name}`);
+};
