@@ -94,6 +94,13 @@ export const SearchBar: React.FC = () => {
                             variant="outlined"
                             label={t("findUser")}
                             inputRef={inputRef}
+                            onKeyDown={(
+                                event: React.KeyboardEvent<HTMLInputElement>
+                            ) => {
+                                if (event.key === "Enter") {
+                                    loadData();
+                                }
+                            }}
                         />
                         <Box
                             sx={{
