@@ -88,9 +88,7 @@ export const SearchBar: React.FC = () => {
                     >
                         <TextField
                             error={errorLoading}
-                            helperText={
-                                errorLoading ? "Unable to find the user" : ""
-                            }
+                            helperText={errorLoading ? t("error") : ""}
                             variant="outlined"
                             label={t("findUser")}
                             inputRef={inputRef}
