@@ -1,10 +1,5 @@
-import {
-    FormControlLabel,
-    Grid,
-    Stack,
-    Switch,
-    TextField,
-} from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import { Box, Grid, Stack, TextField, Tooltip } from "@mui/material";
 import { useContext, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,6 +15,7 @@ import {
     startLoading,
     stopLoading,
 } from "../store/githubUserSlice";
+import { DarkModeSwitch } from "../styledMuiComponents/darkModeSwitch";
 import { LanguagesSwap } from "./LanguagesSwap";
 import { NavButton } from "./NavButton";
 import { PaperWrapper } from "./PaperWrapper";
@@ -67,7 +63,7 @@ export const SearchBar: React.FC = () => {
 
     return (
         <PaperWrapper>
-            <Grid container spacing={1}>
+            <Grid container spacing={2}>
                 <Grid
                     item
                     xs={3}
@@ -78,14 +74,14 @@ export const SearchBar: React.FC = () => {
                     {!user && <LanguagesSwap />}
                     {user && (
                         <NavButton onClick={goHomeHandler} variant="text">
-                            {t("home")}
+                            <Box sx={{ fontWeight: "bold" }}>{t("home")}</Box>
                         </NavButton>
                     )}
                 </Grid>
-                <Grid item xs={6} md={10}>
+                <Grid item xs={7} md={10}>
                     <Stack
                         direction="row"
-                        spacing={3}
+                        spacing={1}
                         sx={{
                             justifyContent: "center",
                         }}
@@ -99,14 +95,34 @@ export const SearchBar: React.FC = () => {
                             label={t("findUser")}
                             inputRef={inputRef}
                         />
-                        <NavButton onClick={loadData}>{t("search")}</NavButton>
+                        <Box
+                            sx={{
+                                display: "flex",
+                                alignItems: "center",
+                                "&:hover": {
+                                    cursor: "pointer",
+                                    color: "primary.main",
+                                },
+                            }}
+                            onClick={loadData}
+                        >
+                            <Tooltip title={t("search")}>
+                                <SearchIcon fontSize="large" />
+                            </Tooltip>
+                        </Box>
                     </Stack>
                 </Grid>
-                <Grid item xs={3} md={1}>
-                    <FormControlLabel
-                        control={<Switch onChange={handleUpdateTheme} />}
-                        label={t("darkMode")}
-                    />
+                <Grid
+                    item
+                    xs={2}
+                    md={1}
+                    sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "flex-end",
+                    }}
+                >
+                    <DarkModeSwitch onChange={handleUpdateTheme} />
                 </Grid>
             </Grid>
         </PaperWrapper>

@@ -18,7 +18,6 @@ export const DarkModeContextProvider: React.FC<DarkModeContextProps> = ({
     const [theme, setTheme] = useState<Theme>(LIGHT);
 
     const setThemeHandler = (newTheme: Theme) => {
-        console.log("The new theme: ", newTheme);
         setTheme(newTheme);
     };
 
