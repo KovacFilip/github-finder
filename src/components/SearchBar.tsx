@@ -6,6 +6,7 @@ import {
     TextField,
 } from "@mui/material";
 import { useContext, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { DARK, LIGHT } from "../constants/theme";
 import { ThemeContext } from "../context/DarkModeContextProvider";
@@ -25,6 +26,7 @@ import { PaperWrapper } from "./PaperWrapper";
 
 export const SearchBar: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
+    const { t } = useTranslation("searchBar");
     const dispatch = useDispatch();
     const errorLoading = useSelector(
         (state: RootState) => state.githubUserSlice.error
@@ -76,7 +78,7 @@ export const SearchBar: React.FC = () => {
                     {!user && <LanguagesSwap />}
                     {user && (
                         <NavButton onClick={goHomeHandler} variant="text">
-                            Home
+                            {t("home")}
                         </NavButton>
                     )}
                 </Grid>
@@ -94,16 +96,16 @@ export const SearchBar: React.FC = () => {
                                 errorLoading ? "Unable to find the user" : ""
                             }
                             variant="outlined"
-                            label="Find a user"
+                            label={t("findUser")}
                             inputRef={inputRef}
                         />
-                        <NavButton onClick={loadData}>SEARCH</NavButton>
+                        <NavButton onClick={loadData}>{t("search")}</NavButton>
                     </Stack>
                 </Grid>
                 <Grid item xs={3} md={1}>
                     <FormControlLabel
                         control={<Switch onChange={handleUpdateTheme} />}
-                        label="Dark Mode"
+                        label={t("darkMode")}
                     />
                 </Grid>
             </Grid>

@@ -1,4 +1,5 @@
 import { Button, CircularProgress, Grid, Stack } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { dateDisplay } from "../helpers/dateDisplay";
 import { RootState } from "../store";
@@ -7,6 +8,7 @@ import { PaperWrapper } from "./PaperWrapper";
 import { ProfileRow } from "./ProfileRow";
 
 export const User: React.FC = () => {
+    const { t } = useTranslation("userInfo");
     const user = useSelector((state: RootState) => state.githubUserSlice.user);
     const loading = useSelector(
         (state: RootState) => state.githubUserSlice.loading
@@ -15,7 +17,7 @@ export const User: React.FC = () => {
     return (
         <>
             {!loading && user && (
-                <PaperWrapper title="Profile">
+                <PaperWrapper title={t("profile.profile")}>
                     <Grid
                         container
                         sx={{
@@ -31,26 +33,26 @@ export const User: React.FC = () => {
                         <Grid item xs={12} md={7}>
                             <Stack>
                                 <ProfileRow
-                                    rowName="Username:"
+                                    rowName={t("profile.username")}
                                     rowValue={user.username}
                                 />
 
                                 {user.email && (
                                     <ProfileRow
-                                        rowName="Email:"
+                                        rowName={t("profile.email")}
                                         rowValue={user.email}
                                     />
                                 )}
                                 <ProfileRow
-                                    rowName="Created:"
+                                    rowName={t("profile.created")}
                                     rowValue={dateDisplay(user.created)}
                                 />
                                 <ProfileRow
-                                    rowName="Followers:"
+                                    rowName={t("profile.followers")}
                                     rowValue={user.followers.toString()}
                                 />
                                 <ProfileRow
-                                    rowName="Following:"
+                                    rowName={t("profile.following")}
                                     rowValue={user.following.toString()}
                                 />
                                 <Grid item xs={12}>
@@ -69,7 +71,7 @@ export const User: React.FC = () => {
                                             },
                                         }}
                                     >
-                                        Visit profile
+                                        {t("profile.visitProfile")}
                                     </Button>
                                 </Grid>
                             </Stack>

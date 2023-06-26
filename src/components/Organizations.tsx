@@ -1,10 +1,12 @@
 import { CircularProgress, Grid } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { Organization } from "./Organization";
 import { PaperWrapper } from "./PaperWrapper";
 
 export const Organizations: React.FC = () => {
+    const { t } = useTranslation("userInfo");
     const organizations = useSelector(
         (state: RootState) => state.githubUserSlice.organizations
     );
@@ -23,7 +25,7 @@ export const Organizations: React.FC = () => {
     return (
         <>
             {!loading && orgsObjs.length > 0 && (
-                <PaperWrapper title="Organizations">
+                <PaperWrapper title={t('organizations.organizations')}>
                     <Grid container>{orgsObjs}</Grid>
                 </PaperWrapper>
             )}

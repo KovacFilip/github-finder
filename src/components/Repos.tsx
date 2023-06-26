@@ -1,10 +1,13 @@
 import { CircularProgress, Grid, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { PaperWrapper } from "./PaperWrapper";
 import { Repo } from "./Repo";
 
 export const Repos: React.FC = () => {
+    const { t } = useTranslation("userInfo");
+
     const repos = useSelector(
         (state: RootState) => state.githubUserSlice.repos
     );
@@ -23,14 +26,14 @@ export const Repos: React.FC = () => {
     return (
         <>
             {reposObjects.length === 0 && !loading && (
-                <PaperWrapper title="Repositories">
+                <PaperWrapper title={t("repos.repos")}>
                     <Typography variant="body1">
-                        User does not have any public repositories
+						{t('repos.noRepos')}
                     </Typography>
                 </PaperWrapper>
             )}
             {reposObjects.length > 0 && !loading && (
-                <PaperWrapper title="Repositories">
+                <PaperWrapper title={t("repos.repos")}>
                     <Grid container spacing={4}>
                         {reposObjects}
                     </Grid>
