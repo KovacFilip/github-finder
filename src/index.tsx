@@ -2,6 +2,7 @@ import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./App";
 import { DarkModeContextProvider } from "./context/DarkModeContextProvider";
+import "./i18n";
 import "./index.css";
 import { store } from "./store";
 
