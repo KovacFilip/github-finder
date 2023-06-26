@@ -1,4 +1,5 @@
 import { Grid, Stack, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { RootState } from "../store";
 import { ProfilePicture } from "../styledMuiComponents/ProfilePicture";
@@ -6,6 +7,8 @@ import { PaperButton } from "./PaperButton";
 import { PaperWrapper } from "./PaperWrapper";
 
 export const SelectedOrganization: React.FC = () => {
+    const { t } = useTranslation("organization");
+
     const organization = useSelector(
         (state: RootState) => state.selectedOrganizationSlice.organization
     );
@@ -47,7 +50,7 @@ export const SelectedOrganization: React.FC = () => {
                                             );
                                         }}
                                     >
-                                        Visit Website
+                                        {t("visitWebsite")}
                                     </PaperButton>
                                 )}
 
@@ -57,7 +60,7 @@ export const SelectedOrganization: React.FC = () => {
                                             window.open(organization.githubUrl);
                                         }}
                                     >
-                                        Visit GitHub
+                                        {t("visitGitHub")}
                                     </PaperButton>
                                 )}
                             </Stack>
