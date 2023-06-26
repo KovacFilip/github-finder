@@ -1,4 +1,4 @@
-import { Button, CircularProgress, Grid, Stack } from "@mui/material";
+import { Button, CircularProgress, Grid } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { dateDisplay } from "../helpers/dateDisplay";
@@ -31,7 +31,7 @@ export const User: React.FC = () => {
                             />
                         </Grid>
                         <Grid item xs={12} md={7}>
-                            <Stack>
+                            <Grid container>
                                 <ProfileRow
                                     rowName={t("profile.username")}
                                     rowValue={user.username}
@@ -55,14 +55,19 @@ export const User: React.FC = () => {
                                     rowName={t("profile.following")}
                                     rowValue={user.following.toString()}
                                 />
-                                <Grid item xs={12}>
+                                <Grid
+                                    item
+                                    xs={12}
+                                    sx={{
+                                        display: "flex",
+                                    }}
+                                >
                                     <Button
                                         variant="contained"
                                         onClick={() => {
                                             window.open(user.githubUrl);
                                         }}
                                         sx={{
-                                            width: "150px",
                                             marginTop: "20px",
                                             mx: "auto",
                                             display: {
@@ -74,7 +79,7 @@ export const User: React.FC = () => {
                                         {t("profile.visitProfile")}
                                     </Button>
                                 </Grid>
-                            </Stack>
+                            </Grid>
                         </Grid>
                     </Grid>
                 </PaperWrapper>

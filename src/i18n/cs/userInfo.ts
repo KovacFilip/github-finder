@@ -1,7 +1,7 @@
 export const userInfo = {
     profile: {
         profile: "Profil",
-        username: "Uživatelské jméno:",
+        username: "Uživatel:",
         email: "Email:",
         created: "Vytvořeno:",
         followers: "Sledující:",
