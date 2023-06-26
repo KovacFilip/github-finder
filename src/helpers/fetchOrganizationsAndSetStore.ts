@@ -8,7 +8,6 @@ export const fetchOrganizationsAndSetStore = async (
 ) => {
     try {
         const userOrgs = await getUserOrganizations(username);
-        console.log(userOrgs);
         const organizations: Organization[] = [];
         const orgsData = userOrgs.data;
 
