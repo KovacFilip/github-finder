@@ -19,6 +19,7 @@ import {
     startLoading,
     stopLoading,
 } from "../store/githubUserSlice";
+import { LanguagesSwap } from "./LanguagesSwap";
 import { NavButton } from "./NavButton";
 import { PaperWrapper } from "./PaperWrapper";
 
@@ -72,6 +73,7 @@ export const SearchBar: React.FC = () => {
                     justifyContent="center"
                     alignItems="center"
                 >
+                    {!user && <LanguagesSwap />}
                     {user && (
                         <NavButton onClick={goHomeHandler} variant="text">
                             Home
