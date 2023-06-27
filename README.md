@@ -1,46 +1,33 @@
-# Getting Started with Create React App
+# GitHub Finder
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GitHub Finder is an app, that allows anyone to see any GitHub user along with his public repositories and organizations.
 
-## Available Scripts
+The app is deployed on: https://kovacfilip.github.io/github-finder/
+The app was bootstrapped with create-react-app with TypeScript
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+1. Search for GitHub user
+   See the user overview
+   See users public repositories, which are clickable and will link you to GitHub
+   See users organizations (If has any), those are clickable and they will show basic organization info (with links to GitHub and organization website)
+2. Switch between dark/light mode
+3. Switch between Czech and English
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Technologies
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. React with Typescript
+2. Material UI
+3. Redux
+4. i18n
+5. deployed with GitHub pages
 
-### `npm test`
+## Code formatters and linters
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. I use https://prettier.io/ for code formatting
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Clone the repository
+2. run `npm install` in your terminal to install node_modules
+3. to run the app in your development studio, run: `npm start`.
