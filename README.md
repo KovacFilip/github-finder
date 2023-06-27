@@ -8,9 +8,9 @@ The app was bootstrapped with create-react-app with TypeScript
 ## Features
 
 1. Search for GitHub user
-   See the user overview
-   See users public repositories, which are clickable and will link you to GitHub
-   See users organizations (If has any), those are clickable and they will show basic organization info (with links to GitHub and organization website)
+   1.1. See the user overview
+   1.2. See users public repositories, which are clickable and will link you to GitHub
+   1.3 See users organizations (If has any), those are clickable and they will show basic organization info (with links to GitHub and organization website)
 2. Switch between dark/light mode
 3. Switch between Czech and English
 
