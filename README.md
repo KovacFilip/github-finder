@@ -3,6 +3,7 @@
 GitHub Finder is an app, that allows anyone to see any GitHub user along with his public repositories and organizations.
 
 The app is deployed on: https://kovacfilip.github.io/github-finder/
+
 The app was bootstrapped with create-react-app with TypeScript
 
 ## Features
