@@ -25,6 +25,7 @@ The app was bootstrapped with create-react-app with TypeScript
 ## Code formatters and linters
 
 1. I use https://prettier.io/ for code formatting
+2. I also use ESlint for static analysis (global configurations from ESlint extension in VS code)
 
 ## Installation
 
